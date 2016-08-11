@@ -1,4 +1,6 @@
 class LocationsController < ApplicationController
+  # LocationsHelper is capital camelcase because it is a module
+  include LocationsHelper
   before_action :set_location, only: [:show, :edit, :update, :destroy]
 
   # GET /locations
@@ -10,7 +12,16 @@ class LocationsController < ApplicationController
   # GET /locations/1
   # GET /locations/1.json
   def show
+    #Marta API URL
+    source_url ="http://developer.itsmarta.com/BRDRestService/RestBusRealTimeService/GetAllBus"
+    #Use helper method to get all buses and parse them
+    @buses = fetch_buses_from_api(source_url)
+    @buses.select! do |bus|
+      is_nearby?(@location.latitude, @location.longitude, bus["LATITUDE"], bus["LONGITUDE"])
+    end
+
   end
+
 
   # GET /locations/new
   def new
