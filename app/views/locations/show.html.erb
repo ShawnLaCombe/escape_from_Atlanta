@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Your Escape From Atlanta Bus!</h1>
-
+ 
 <h3 class= "text-muted">Your Current Location</h3>
 
 <p class = "text-muted">
@@ -20,8 +20,9 @@
   </p>
 <% end %>
 <% if @buses.empty? %>
+<p id ="notice"><%= notice %></p>
 <p>
-  No close buses in your current location. <%= link_to "Edit your location", edit_location_path(@location) %>.
+  No close buses in your current location. <%= link_to "Edit your location", new_location_path(@location) %>
 </p>
 <% end %>
 

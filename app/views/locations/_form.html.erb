@@ -1,13 +1,18 @@
+
 <%= simple_form_for(@location, html: {class: "form-inline"}) do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs form-group">
-    <%= f.input :street_address, class: "form-control" %>
-    <%= f.input :city, class: "form_control" %>
 
+  
+  <div class="form-inputs form-group">
+    <%= f.input :max_distance, class: "form-control"%>
+    <%= f.input :street_address, class: "form-control" %>
+    <%= f.input :city, class: "form-control" %>
   </div>
 
   <div class="form-actions form-group">
     <%= f.button :submit, "Find My Bus" %>
   </div>
 <% end %>
+
+

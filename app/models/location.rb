@@ -1,3 +1,4 @@
+# This is the Location class
 class Location < ActiveRecord::Base
   geocoded_by :full_street_address
   after_validation :geocode
