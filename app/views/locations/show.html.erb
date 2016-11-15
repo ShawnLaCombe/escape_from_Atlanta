@@ -11,7 +11,7 @@
   </small>
 </p>
 
-<div id="map-canvas" style="height:500px;width:500px;margin:0;padding:0;"></div>
+<div id="map-canvas"></div>
 
 <h3>The closest buses are:</h3>
 <% @buses.each do |bus| %>
@@ -42,16 +42,21 @@ function initialize() {
   var mapOptions = {
     center: myLocation,
     zoom: 15
+   
   };
 
   var map = new google.maps.Map(document.getElementById('map-canvas'),
         mapOptions);
 
+  var personIcon ="<%= image_path 'man_icon.png' %>";
+
   var myMarker = new google.maps.Marker({
     position: myLocation,
     map: map,
     animation: google.maps.Animation.DROP,
-    title: 'My Location'
+    optimized: false,
+    title: 'My Location',
+    icon: personIcon
   });
   var nearbyBuses = <%= raw @buses.to_json %>;
     nearbyBuses.forEach(function (element){
